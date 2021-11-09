@@ -5,7 +5,7 @@ Road markings can be downloaded in the form of JSON and used to train deep neura
 
 <i>This labelling framework has been developed within the Make2Learn and Innovate Workshop sponsered by Federal Ministry of Education and Research of Germany (BMBF) of <a href="https://www.photonikforschung.de/projekte/open-innovation/projekt/morphoa.html"> Morphoa-Project</a>.</i>
 
-![alt text](https://github.com/AVESREALITY/RoadLabel/blob/9af14c79e85e50760e00dc8dfa69f74b1e72ad85/labeling%20Tool.JPG 'Preview')
+![alt text](https://github.com/AVESREALITY/RoadLabel/blob/d4391af766ad64fd2673aa8e1c20b461a2684101/labeling%20Tool_v2.JPG 'Preview')
 ## Setup
 
 
