@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+        <script src="client.js"></script>
+        
+       
+        <link rel="stylesheet" href="index.css">
+        
+    </head>
+    <body>
+        <header>
+            <img src="AVES_logo.png" id="header-logo">AVES <b>AI</b>
+            <div class="header-btn"><i class="las la-home"></i>Dashboard</div>
+        </header>
+        <main id="app" v-on:keyup.delete="delImage()">
+            <section>
+                <header>
+                    <i class="las la-image"></i> Dataset
+                    <div id="downloadButtons">
+                     <div id="downloadLabels" v-on:click="downloadImages()" class="downloadBtn"><i class="las la-cloud-download-alt"></i> Images</div>
+                     <div id="downloadLabels" v-on:click="downloadLabels()" class="downloadBtn"><i class="las la-cloud-download-alt"></i> Labels</div>
+                    </div>
+                </header>
+                
+             
+                <article id="images" v-on:drop="imageDrop(event)" v-on:dragover="imageDrag(event)" v-bind:class="{ images_drag: active_drag}">
+
+                    <div v-for="(image, index) in images" class="img_box" v-bind:class="{ img_box_active: index==image_active}" v-on:click="setActiveImage(index)">
+                        <img :src="image.src" width="100" height="100">
+                        <div class="img_box_caption">{{image.name}}<div v-if="image.uploading" class="loader">Loading...</div></div>
+                    </div>
+                </article>
+            </section>
+            <section id="labeling-area">
+                <header><i class="las la-edit"></i>{{images[image_active].name}}</header>
+                <div id="canvas_center">
+                    <div>
+                    <div id="canvas_container">
+                        <canvas id="canvas" width="512" height="512"></canvas>
+                        <img id="source" :src="images[image_active].src"  width="512" height="512">
+
+                    </div>
+                    <div class="slidecontainer">
+                        <div class="slider_name">Brighness</div> <input v-model="brightness" type="range" min="0.0" max="200.0" value="100.0" class="slider" id="slider_brightness">
+                      </div>
+                </div>
+                    
+                </div>
+            </section>
+            <section class="section-scroll">
+                <header>Elements</header>
+                <article id="Elements">
+                    Boundaries
+                    <div v-for="(element,index) in Canvas.Elements">
+                        <div class="CanvasElement">
+                            <div class="CanvasElement_Toggle" v-bind:class="{CanvasElement_hidden: !element.visible}"  v-on:click="toggleElement(index)"><i class="las la-eye"></i></div>
+                            <div class="CanvasElement_Name">{{element.name}} {{index}}</div>
+                            <div class="CanvasElement_Delete" v-on:click="deleteElement(index)"><i class="las la-trash-alt"></i></div>
+                            
+                        </div>
+                    </div>
+
+                    <br>
+                    Segmentation
+                    <div v-for="(element,index) in Categories">
+                        <div class="ElementCategory"><div class="CatColor" v-bind:style="{background:element.color}"></div>{{element.name}}</div>
+                    </div>
+
+                
+                </article>
+            </section>
+        </main>
+    </body>
+    <script src="canvas.js"></script>
+    <script src="index.js"></script>
+</html>
