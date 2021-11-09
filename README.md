@@ -3,6 +3,8 @@
 HTML5, Canvas tool to annotate images with road lane markings. \
 Road markings can be downloaded in the form of JSON and used to train deep neural network for lane extraction.
 
+<i>This labelling framework has been developed within the Make2Learn and Innovate Workshop sponsered by Federal Ministry of Education and Research of Germany (BMBF) of <a href="https://www.photonikforschung.de/projekte/open-innovation/projekt/morphoa.html"> Morphoa-Project</a>.</i>
+
 ## Setup
 
 
